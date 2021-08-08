@@ -14,10 +14,17 @@ import { Column } from "../../../lib/data-set/column";
                                    (click)="selectAllRows.emit($event)">
     </th>
     <th ng2-st-actions-title *ngIf="showActionColumnLeft" [grid]="grid"></th>
-    <th *ngFor="let column of grid.getColumns()" class="ng2-smart-th {{ column.id }}" [ngClass]="column.class"
-      [style.width]="column.width" >
-      <ng2-st-column-title [source]="source" [column]="column" (sort)="sort.emit($event)"></ng2-st-column-title>
-    </th>
+    <ng-container *ngIf="displayType === 'singleColumn'">
+      <th class="ng2-smart-th singleColumn" [colSpan]="grid.getColumns().length">
+
+      </th>
+    </ng-container>
+    <ng-container *ngIf="displayType !== 'singleColumn'">
+      <th *ngFor="let column of grid.getColumns()" class="ng2-smart-th {{ column.id }}" [ngClass]="column.class"
+        [style.width]="column.width" >
+        <ng2-st-column-title [source]="source" [column]="column" (sort)="sort.emit($event)"></ng2-st-column-title>
+      </th>
+    </ng-container>
     <th ng2-st-actions-title *ngIf="showActionColumnRight" [grid]="grid"></th>
   `,
 })
@@ -26,6 +33,7 @@ export class TheadTitlesRowComponent implements OnChanges {
   @Input() grid: Grid;
   @Input() isAllSelected: boolean;
   @Input() source: DataSource;
+  @Input() displayType: string;
 
   @Output() sort = new EventEmitter<any>();
   @Output() selectAllRows = new EventEmitter<any>();

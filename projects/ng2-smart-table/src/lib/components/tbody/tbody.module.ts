@@ -8,11 +8,13 @@ import { Ng2SmartTableTbodyComponent } from './tbody.component';
 import { TbodyCreateCancelComponent } from './cells/create-cancel.component';
 import { TbodyEditDeleteComponent } from './cells/edit-delete.component';
 import { TbodyCustomComponent } from './cells/custom.component';
+import { TBodyTitleComponent } from './cells/title/tbody-title.component';
 
 const TBODY_COMPONENTS = [
   TbodyCreateCancelComponent,
   TbodyEditDeleteComponent,
   TbodyCustomComponent,
+  TBodyTitleComponent,
   Ng2SmartTableTbodyComponent
 ];
 

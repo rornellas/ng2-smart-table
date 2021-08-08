@@ -1,9 +1,7 @@
 import {Component, Input, Output, EventEmitter, } from '@angular/core';
 
 import { Grid } from '../../lib/grid';
-import { Row } from '../../lib/data-set/row';
 import { DataSource } from '../../lib/data-source/data-source';
-import {Column} from "../../lib/data-set/column";
 
 @Component({
   selector: '[ng2-st-tbody]',
@@ -17,6 +15,7 @@ export class Ng2SmartTableTbodyComponent {
   @Input() deleteConfirm: EventEmitter<any>;
   @Input() editConfirm: EventEmitter<any>;
   @Input() rowClassFunction: Function;
+  @Input() displayType: string;
 
   @Output() save = new EventEmitter<any>();
   @Output() cancel = new EventEmitter<any>();
@@ -28,6 +27,7 @@ export class Ng2SmartTableTbodyComponent {
   @Output() editRowSelect = new EventEmitter<any>();
   @Output() multipleSelectRow = new EventEmitter<any>();
   @Output() rowHover = new EventEmitter<any>();
+  @Output() sort = new EventEmitter<any>();
 
   isMultiSelectVisible: boolean;
   showActionColumnLeft: boolean;

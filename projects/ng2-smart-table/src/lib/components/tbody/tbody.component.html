@@ -18,17 +18,37 @@
    <td *ngIf="row.isInEditing && showActionColumnLeft"  class="ng2-smart-actions">
     <ng2-st-tbody-create-cancel [grid]="grid" [row]="row" [editConfirm]="editConfirm"></ng2-st-tbody-create-cancel>
   </td>
-  <td *ngFor="let cell of row.cells">
-    <ng2-smart-table-cell [cell]="cell"
-                          [grid]="grid"
-                          [row]="row"
-                          [isNew]="false"
-                          [mode]="mode"
-                          [editConfirm]="editConfirm"
-                          [inputClass]="editInputClass"
-                          [isInEditing]="row.isInEditing">
-    </ng2-smart-table-cell>
-  </td>
+
+  <ng-container *ngIf="displayType === 'singleColumn'">
+    <td [colSpan]="row.cells.length">
+      <div *ngFor="let cell of row.cells" style="display: inline-flex; margin-right: 1.5rem;">
+        <ng2-smart-column-title [source]="source" [column]="cell.getColumn()" (sort)="sort.emit($event)"></ng2-smart-column-title>
+        <ng2-smart-table-cell [cell]="cell"
+                              [grid]="grid"
+                              [row]="row"
+                              [isNew]="false"
+                              [mode]="mode"
+                              [editConfirm]="editConfirm"
+                              [inputClass]="editInputClass"
+                              [isInEditing]="row.isInEditing">
+        </ng2-smart-table-cell>
+      </div>
+    </td>
+  </ng-container>
+
+  <ng-container *ngIf="displayType !== 'singleColumn'">
+    <td *ngFor="let cell of row.cells">
+      <ng2-smart-table-cell [cell]="cell"
+                            [grid]="grid"
+                            [row]="row"
+                            [isNew]="false"
+                            [mode]="mode"
+                            [editConfirm]="editConfirm"
+                            [inputClass]="editInputClass"
+                            [isInEditing]="row.isInEditing">
+      </ng2-smart-table-cell>
+    </td>
+  </ng-container>
 
   <td *ngIf="row.isInEditing && showActionColumnRight"  class="ng2-smart-actions">
     <ng2-st-tbody-create-cancel [grid]="grid" [row]="row" [editConfirm]="editConfirm"></ng2-st-tbody-create-cancel>
