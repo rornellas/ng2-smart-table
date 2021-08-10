@@ -24,7 +24,7 @@ export class TBodyTitleComponent implements OnChanges {
   @Output() sort = new EventEmitter<any>();
 
   get currentDirection() {
-    if (!this.column.currentDirection) {
+    if (!this.column['currentDirection']) {
       this.column['currentDirection'] = this.column.sortDirection;
     }
 
