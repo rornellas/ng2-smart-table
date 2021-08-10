@@ -19,10 +19,21 @@ import { Column } from '../../../../lib/data-set/column';
 })
 export class TBodyTitleComponent implements OnChanges {
 
-  currentDirection = '';
   @Input() column: Column;
   @Input() source: DataSource;
   @Output() sort = new EventEmitter<any>();
+
+  get currentDirection() {
+    if (!this.column.currentDirection) {
+      this.column['currentDirection'] = this.column.sortDirection;
+    }
+
+    return this.column['currentDirection'];
+  }
+
+  set currentDirection(currentDirection: string) {
+    this.column['currentDirection'] = currentDirection;
+  }
 
   protected dataChangedSub: Subscription;
 
