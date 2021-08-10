@@ -10,18 +10,39 @@ export class BasicExampleMultiSelectComponent {
 
   settings = {
     selectMode: 'multi',
+    displayConfig : {
+      type : 'singleColumn',
+      containerClass : 'row',
+      groups: [
+        {
+          name: 'beta',
+          style: 'color: red; margin-bottom: 2rem'
+        },
+        {
+          name: 'teta',
+          style: 'color: blue'
+        }
+      ]
+    },
     columns: {
       id: {
         title: 'ID',
+        style: 'width: 20%; display: table-cell',
+        class: 'crazy-class',
+        group: 'beta',
       },
       name: {
         title: 'Full Name',
+        style: 'width: 20%; display: table-cell',
       },
       username: {
         title: 'User Name',
+        style: 'width: 20%; display: table-cell',
       },
       email: {
         title: 'Email',
+        style: 'width: 20%; display: table-cell',
+        group: 'teta',
       },
     },
   };

@@ -15,7 +15,6 @@ export class Ng2SmartTableTbodyComponent {
   @Input() deleteConfirm: EventEmitter<any>;
   @Input() editConfirm: EventEmitter<any>;
   @Input() rowClassFunction: Function;
-  @Input() displayType: string;
 
   @Output() save = new EventEmitter<any>();
   @Output() cancel = new EventEmitter<any>();
@@ -38,6 +37,14 @@ export class Ng2SmartTableTbodyComponent {
   isActionEdit: boolean;
   isActionDelete: boolean;
   noDataMessage: boolean;
+
+  get displayConfig() {
+    return this.grid?.settings?.displayConfig;
+  }
+
+  get displayConfigGroups() {
+    return this.displayConfig?.groups;
+  }
 
   get tableColumnsCount() {
     const actionColumns = this.isActionAdd || this.isActionEdit || this.isActionDelete ? 1 : 0;

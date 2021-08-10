@@ -28,15 +28,19 @@ export class AdvancedExampleConfirmComponent {
     columns: {
       id: {
         title: 'ID',
+        style: 'width: 20%; display: table-cell',
       },
       name: {
         title: 'Full Name',
+        style: 'width: 20%; display: table-cell',
       },
       username: {
         title: 'User Name',
+        style: 'width: 20%; display: table-cell',
       },
       email: {
         title: 'Email',
+        style: 'width: 20%',
       },
     },
   };
@@ -44,6 +48,7 @@ export class AdvancedExampleConfirmComponent {
   data = [
     {
       id: 1,
+      style: 'width: 20%; display: table-cell',
       name: 'Leanne Graham',
       username: 'Bret',
       email: 'Sincere@april.biz',
@@ -51,6 +56,7 @@ export class AdvancedExampleConfirmComponent {
     },
     {
       id: 2,
+      style: 'width: 20%; display: table-cell',
       name: 'Ervin Howell',
       username: 'Antonette',
       email: 'Shanna@melissa.tv',
@@ -58,6 +64,7 @@ export class AdvancedExampleConfirmComponent {
     },
     {
       id: 3,
+      style: 'width: 20%; display: table-cell',
       name: 'Clementine Bauch',
       username: 'Samantha',
       email: 'Nathan@yesenia.net',
@@ -65,6 +72,7 @@ export class AdvancedExampleConfirmComponent {
     },
     {
       id: 4,
+      style: 'width: 20%; display: table-cell',
       name: 'Patricia Lebsack',
       username: 'Karianne',
       email: 'Julianne.OConner@kory.org',
@@ -72,6 +80,7 @@ export class AdvancedExampleConfirmComponent {
     },
     {
       id: 5,
+      style: 'width: 20%; display: table-cell',
       name: 'Chelsey Dietrich',
       username: 'Kamren',
       email: 'Lucio_Hettinger@annie.ca',
@@ -79,6 +88,7 @@ export class AdvancedExampleConfirmComponent {
     },
     {
       id: 6,
+      style: 'width: 20%; display: table-cell',
       name: 'Mrs. Dennis Schulist',
       username: 'Leopoldo_Corkery',
       email: 'Karley_Dach@jasper.info',
@@ -86,6 +96,7 @@ export class AdvancedExampleConfirmComponent {
     },
     {
       id: 7,
+      style: 'width: 20%; display: table-cell',
       name: 'Kurtis Weissnat',
       username: 'Elwyn.Skiles',
       email: 'Telly.Hoeger@billy.biz',
@@ -93,6 +104,7 @@ export class AdvancedExampleConfirmComponent {
     },
     {
       id: 8,
+      style: 'width: 20%; display: table-cell',
       name: 'Nicholas Runolfsdottir V',
       username: 'Maxime_Nienow',
       email: 'Sherwood@rosamond.me',
@@ -100,6 +112,7 @@ export class AdvancedExampleConfirmComponent {
     },
     {
       id: 9,
+      style: 'width: 20%; display: table-cell',
       name: 'Glenna Reichert',
       username: 'Delphine',
       email: 'Chaim_McDermott@dana.io',
@@ -107,6 +120,7 @@ export class AdvancedExampleConfirmComponent {
     },
     {
       id: 10,
+      style: 'width: 20%; display: table-cell',
       name: 'Clementina DuBuque',
       username: 'Moriah.Stanton',
       email: 'Rey.Padberg@karina.biz',
@@ -114,6 +128,7 @@ export class AdvancedExampleConfirmComponent {
     },
     {
       id: 11,
+      style: 'width: 20%; display: table-cell',
       name: 'Nicholas DuBuque',
       username: 'Nicholas.Stanton',
       email: 'Rey.Padberg@rosamond.biz',

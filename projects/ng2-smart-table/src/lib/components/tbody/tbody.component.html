@@ -19,24 +19,65 @@
     <ng2-st-tbody-create-cancel [grid]="grid" [row]="row" [editConfirm]="editConfirm"></ng2-st-tbody-create-cancel>
   </td>
 
-  <ng-container *ngIf="displayType === 'singleColumn'">
-    <td [colSpan]="row.cells.length">
-      <div *ngFor="let cell of row.cells" style="display: inline-flex; margin-right: 1.5rem;">
-        <ng2-smart-column-title [source]="source" [column]="cell.getColumn()" (sort)="sort.emit($event)"></ng2-smart-column-title>
-        <ng2-smart-table-cell [cell]="cell"
-                              [grid]="grid"
-                              [row]="row"
-                              [isNew]="false"
-                              [mode]="mode"
-                              [editConfirm]="editConfirm"
-                              [inputClass]="editInputClass"
-                              [isInEditing]="row.isInEditing">
-        </ng2-smart-table-cell>
-      </div>
+  <ng-container *ngIf="displayConfig?.type === 'singleColumn'">
+    <td [colSpan]="row.cells.length" [class]="displayConfig.columnClass" [style]="displayConfig.columnStyle">
+
+        <div [class]="displayConfig.containerClass" [style]="displayConfig.containerStyle">
+
+          <div *ngFor="let group of displayConfigGroups" [class]="group.class" [style]="group.style">
+
+            <ng-container *ngFor="let cell of row.cells">
+
+              <div *ngIf="group.name === cell.getColumn().group" [class]="cell.getColumn().class" [style]="cell.getColumn().style">
+                <div [class]="cell.getColumn().labelClass" [style]="cell.getColumn().labelStyle">
+                  <ng2-smart-column-title [source]="source" [column]="cell.getColumn()" (sort)="sort.emit($event)"></ng2-smart-column-title>
+                </div>
+                <div [class]="cell.getColumn().valueClass" [style]="cell.getColumn().valueStyle">
+                  <ng2-smart-table-cell [cell]="cell"
+                                        [grid]="grid"
+                                        [row]="row"
+                                        [isNew]="false"
+                                        [mode]="mode"
+                                        [editConfirm]="editConfirm"
+                                        [inputClass]="editInputClass"
+                                        [isInEditing]="row.isInEditing">
+                  </ng2-smart-table-cell>
+                </div>
+              </div>
+
+            </ng-container>
+
+          </div>
+
+          <div>
+            <ng-container *ngFor="let cell of row.cells">
+
+              <div *ngIf="cell.getColumn().group === undefined" [class]="cell.getColumn().class" [style]="cell.getColumn().style">
+                <div [class]="cell.getColumn().labelClass" [style]="cell.getColumn().labelStyle">
+                  <ng2-smart-column-title [source]="source" [column]="cell.getColumn()" (sort)="sort.emit($event)"></ng2-smart-column-title>
+                </div>
+                <div [class]="cell.getColumn().valueClass" [style]="cell.getColumn().valueStyle">
+                  <ng2-smart-table-cell [cell]="cell"
+                                        [grid]="grid"
+                                        [row]="row"
+                                        [isNew]="false"
+                                        [mode]="mode"
+                                        [editConfirm]="editConfirm"
+                                        [inputClass]="editInputClass"
+                                        [isInEditing]="row.isInEditing">
+                  </ng2-smart-table-cell>
+                </div>
+              </div>
+
+            </ng-container>
+          </div>
+
+        </div>
+
     </td>
   </ng-container>
 
-  <ng-container *ngIf="displayType !== 'singleColumn'">
+  <ng-container *ngIf="grid?.settings?.displayConfig?.type === 'default' || !grid?.settings?.displayConfig?.type">
     <td *ngFor="let cell of row.cells">
       <ng2-smart-table-cell [cell]="cell"
                             [grid]="grid"

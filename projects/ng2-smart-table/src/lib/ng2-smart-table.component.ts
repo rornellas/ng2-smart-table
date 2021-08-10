@@ -35,17 +35,12 @@ export class Ng2SmartTableComponent implements OnChanges {
   isPagerDisplay: boolean;
   rowClassFunction: Function;
 
-  get displayType() {
-    return this.grid?.settings?.displayType;
-  }
-
   grid: Grid;
   defaultSettings: Object = {
     mode: 'inline', // inline|external|click-to-edit
     selectMode: 'single', // single|multi
     hideHeader: false,
     hideSubHeader: false,
-    displayType: 'singleColumn',
     actions: {
       columnTitle: 'Actions',
       add: true,

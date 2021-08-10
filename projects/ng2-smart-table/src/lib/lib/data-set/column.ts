@@ -5,6 +5,7 @@ export class Column {
   title: string = '';
   type: string = '';
   class: string = '';
+  style: string = '';
   width: string = '';
   isSortable: boolean = false;
   isEditable: boolean = true;
@@ -19,6 +20,46 @@ export class Column {
   valuePrepareFunction: Function;
   filterFunction: Function;
   onComponentInitFunction: Function;
+
+  private _group: any;
+  public get group(): any {
+    return this._group;
+  }
+  public set group(value: any) {
+    this._group = value;
+  }
+
+  private _labelClass: any;
+  public get labelClass(): any {
+    return this._labelClass;
+  }
+  public set labelClass(value: any) {
+    this._labelClass = value;
+  }
+
+  private _labelStyle: any;
+  public get labelStyle(): any {
+    return this._labelStyle;
+  }
+  public set labelStyle(value: any) {
+    this._labelStyle = value;
+  }
+
+  private _valueClass: any;
+  public get valueClass(): any {
+    return this._valueClass;
+  }
+  public set valueClass(value: any) {
+    this._valueClass = value;
+  }
+
+  private _valueStyle: any;
+  public get valueStyle(): any {
+    return this._valueStyle;
+  }
+  public set valueStyle(value: any) {
+    this._valueStyle = value;
+  }
 
   constructor(public id: string, protected settings: any, protected dataSet: DataSet) {
     this.process();
@@ -55,6 +96,12 @@ export class Column {
   protected process() {
     this.title = this.settings['title'];
     this.class = this.settings['class'];
+    this.style = this.settings['style'];
+    this.group = this.settings['group'];
+    this.labelClass = this.settings['labelClass'];
+    this.labelStyle = this.settings['labelStyle'];
+    this.valueClass = this.settings['valueClass'];
+    this.valueStyle = this.settings['valueStyle'];
     this.width = this.settings['width'];
     this.type = this.prepareType();
     this.editor = this.settings['editor'];

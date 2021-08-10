@@ -2,7 +2,6 @@
 
   <thead ng2-st-thead *ngIf="!isHideHeader || !isHideSubHeader"
                       [grid]="grid"
-                      [displayType]="displayType"
                       [isAllSelected]="isAllSelected"
                       [source]="source"
                       [createConfirm]="createConfirm"
@@ -15,7 +14,6 @@
   <tbody ng2-st-tbody [grid]="grid"
                       [source]="source"
                       (sort)="sort($event)"
-                      [displayType]="displayType"
                       [deleteConfirm]="deleteConfirm"
                       [editConfirm]="editConfirm"
                       [rowClassFunction]="rowClassFunction"
