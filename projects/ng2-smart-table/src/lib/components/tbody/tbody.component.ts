@@ -2,6 +2,7 @@ import {Component, Input, Output, EventEmitter, } from '@angular/core';
 
 import { Grid } from '../../lib/grid';
 import { DataSource } from '../../lib/data-source/data-source';
+import { Row } from '../../lib/data-set/row';
 
 @Component({
   selector: '[ng2-st-tbody]',
@@ -49,6 +50,45 @@ export class Ng2SmartTableTbodyComponent {
   get tableColumnsCount() {
     const actionColumns = this.isActionAdd || this.isActionEdit || this.isActionDelete ? 1 : 0;
     return this.grid.getColumns().length + actionColumns;
+  }
+
+  defineIfCollapsable(row: Row, group: any) {
+    this.collapseGroup(row, group);
+    if (group.collapseConfig) {
+      return true;
+    }
+    return false;
+  }
+
+  getByCollapsed(row: Row, group: any, property: string) {
+    if (row[group.name] === undefined) {
+      this.collapseGroup(row, group);
+    }
+
+    const collapsed = row[group.name]?.collapsed;
+
+    if (!collapsed) {
+      if (!group.collapseConfig.collapsed) {
+        group.collapseConfig.collapsed = {};
+      }
+      return group.collapseConfig?.collapsed[property];
+    }
+    if (!group.collapseConfig.expanded) {
+      group.collapseConfig.expanded = {};
+    }
+    return group.collapseConfig?.expanded[property];
+  }
+
+  collapseGroup(row: Row, group: any) {
+    if (row[group.name]?.collapsed === undefined) {
+      if (group?.collapseConfig?.default) {
+        row[group.name] = { collapsed: group?.collapseConfig?.default };
+      } else {
+        row[group.name] = { collapsed: true };
+      }
+    } else {
+      row[group.name].collapsed = !row[group.name].collapsed;
+    }
   }
 
   ngOnChanges() {

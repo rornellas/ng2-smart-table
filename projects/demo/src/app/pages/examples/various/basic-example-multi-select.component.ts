@@ -16,7 +16,16 @@ export class BasicExampleMultiSelectComponent {
       groups: [
         {
           name: 'beta',
-          style: 'color: red; margin-bottom: 2rem'
+          style: 'color: red; margin-bottom: 2rem',
+          collapseConfig: {
+            default: true,
+            collapsed: {
+              text: '-',
+            },
+            expanded: {
+              text: '+',
+            }
+          }
         },
         {
           name: 'teta',
