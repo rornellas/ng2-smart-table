@@ -18,12 +18,12 @@ export class BasicExampleMultiSelectComponent {
           name: 'beta',
           style: 'color: red; margin-bottom: 2rem',
           collapseConfig: {
-            default: true,
+
             collapsed: {
-              text: '-',
+              content: '-',
             },
             expanded: {
-              text: '+',
+              content: '+',
             }
           }
         },

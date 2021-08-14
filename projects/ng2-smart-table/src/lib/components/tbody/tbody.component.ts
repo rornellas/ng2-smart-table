@@ -52,6 +52,20 @@ export class Ng2SmartTableTbodyComponent {
     return this.grid.getColumns().length + actionColumns;
   }
 
+  getCollapseDisplay(row: Row, group: any) {
+    if (group.collapseConfig) {
+
+      if (row[group.name]) {
+        return !row[group.name]?.collapsed ? '' : 'none';
+      }
+
+      return !group.collapseConfig?.default ? '' : 'none';
+
+    } else {
+      return '';
+    }
+  }
+
   defineIfCollapsable(row: Row, group: any) {
     this.collapseGroup(row, group);
     if (group.collapseConfig) {

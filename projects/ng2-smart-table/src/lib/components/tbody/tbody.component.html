@@ -26,15 +26,14 @@
 
           <ng-container *ngFor="let group of displayConfigGroups">
 
-            <div [class]="group.class" [style]="group.style">
+            <div *ngIf="group.collapseConfig" [class]="group.collapseConfig.class" [style]="group.collapseConfig.style">
+              <div (click)="collapseGroup(row, group)" [ngStyle]="getByCollapsed(row, group, 'class')" [ngClass]="getByCollapsed(row, group, 'class')" [innerHTML]="getByCollapsed(row, group, 'content')"></div>
+            </div>
 
-              <div *ngIf="group.collapseConfig">
-                <span (click)="collapseGroup(row, group)" [ngStyle]="getByCollapsed(row, group, 'class')" [ngClass]="getByCollapsed(row, group, 'class')">{{getByCollapsed(row, group, 'text')}}</span>
-              </div>
+            <div [class]="group.class" [style]="group.style" [style.display]="getCollapseDisplay(row, group)">
 
               <ng-container *ngFor="let cell of row.cells">
 
-                <ng-container *ngIf="!row[group.name]?.collapsed">
                   <div *ngIf="group.name === cell.getColumn().group" [class]="cell.getColumn().class" [style]="cell.getColumn().style">
                     <div [class]="cell.getColumn().labelClass" [style]="cell.getColumn().labelStyle">
                       <ng2-smart-column-title [source]="source" [column]="cell.getColumn()" (sort)="sort.emit($event)"></ng2-smart-column-title>
@@ -51,7 +50,6 @@
                       </ng2-smart-table-cell>
                     </div>
                   </div>
-                </ng-container>
 
               </ng-container>
 
