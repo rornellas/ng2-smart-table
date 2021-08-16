@@ -27,6 +27,8 @@ export class Ng2SmartTableComponent implements OnChanges {
   @Output() createConfirm = new EventEmitter<any>();
   @Output() rowHover: EventEmitter<any> = new EventEmitter<any>();
 
+  @Output() gridCreated: EventEmitter<Grid> = new EventEmitter<Grid>();
+
   tableClass: string;
   tableId: string;
   perPageSelect: any;
@@ -154,6 +156,8 @@ export class Ng2SmartTableComponent implements OnChanges {
     this.source = this.prepareSource();
     this.grid = new Grid(this.source, this.prepareSettings());
     this.grid.onSelectRow().subscribe((row) => this.emitSelectRow(row));
+
+    this.gridCreated.emit(this.grid);
   }
 
   prepareSource(): DataSource {
