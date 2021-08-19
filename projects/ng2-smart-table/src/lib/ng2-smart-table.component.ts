@@ -27,7 +27,10 @@ export class Ng2SmartTableComponent implements OnChanges {
   @Output() createConfirm = new EventEmitter<any>();
   @Output() rowHover: EventEmitter<any> = new EventEmitter<any>();
 
+  //ao criar a grid,e a cada pagina,
   @Output() gridCreated: EventEmitter<Grid> = new EventEmitter<Grid>();
+
+  @Output() pageChanged: EventEmitter<any> = new EventEmitter<any>();
 
   tableClass: string;
   tableId: string;
@@ -85,7 +88,7 @@ export class Ng2SmartTableComponent implements OnChanges {
     rowClassFunction: () => ""
   };
 
-  isAllSelected: boolean = false;
+  @Input() isAllSelected: boolean = false;
 
   ngOnChanges(changes: { [propertyName: string]: SimpleChange }) {
     if (this.grid) {
@@ -176,6 +179,7 @@ export class Ng2SmartTableComponent implements OnChanges {
 
   changePage($event: any) {
     this.resetAllSelector();
+    this.pageChanged.emit($event);
   }
 
   sort($event: any) {
