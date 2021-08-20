@@ -16,6 +16,8 @@ export class Grid {
   settings: any;
   dataSet: DataSet;
 
+  dataChanged = new EventEmitter<any>();
+
   onSelectRowSource = new Subject<any>();
 
   constructor(source: DataSource, settings: any) {
@@ -174,6 +176,7 @@ export class Grid {
   processDataChange(changes: any) {
     if (this.shouldProcessChange(changes)) {
       this.dataSet.setData(changes['elements']);
+      this.dataChanged.emit();
       if (this.getSetting('selectMode') !== 'multi') {
         const row = this.determineRowToSelect(changes);
 
