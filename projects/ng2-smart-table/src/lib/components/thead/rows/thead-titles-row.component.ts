@@ -7,11 +7,14 @@ import { Column } from "../../../lib/data-set/column";
 @Component({
   selector: '[ng2-st-thead-titles-row]',
   template: `
-    <th ng2-st-checkbox-select-all *ngIf="isMultiSelectVisible"
+    <th ng2-st-checkbox-select-all *ngIf="isMultiSelectVisible && showSelectAll"
                                    [grid]="grid"
                                    [source]="source"
                                    [isAllSelected]="isAllSelected"
                                    (click)="selectAllRows.emit($event)">
+    </th>
+    <th *ngIf="isMultiSelectVisible && !showSelectAll">
+
     </th>
     <th ng2-st-actions-title *ngIf="showActionColumnLeft" [grid]="grid"></th>
     <ng-container *ngIf="grid?.settings?.displayConfig?.type === 'singleColumn'">
@@ -40,9 +43,11 @@ export class TheadTitlesRowComponent implements OnChanges {
   isMultiSelectVisible: boolean;
   showActionColumnLeft: boolean;
   showActionColumnRight: boolean;
+  showSelectAll: boolean;
 
 
   ngOnChanges() {
+    this.showSelectAll = this.grid.showSelectAll();
     this.isMultiSelectVisible = this.grid.isMultiSelectVisible();
     this.showActionColumnLeft = this.grid.showActionColumn('left');
     this.showActionColumnRight = this.grid.showActionColumn('right');

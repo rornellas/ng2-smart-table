@@ -41,6 +41,10 @@ export class Grid {
     return this.getSetting('selectMode') === 'multi';
   }
 
+  showSelectAll(): boolean {
+    return this.getSetting('showSelectAll') === true;
+  }
+
   getNewRow(): Row {
     return this.dataSet.newRow;
   }
