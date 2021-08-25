@@ -7,6 +7,7 @@ import { DefaultEditor } from './default-editor';
   selector: 'completer-editor',
   template: `
     <ng2-completer [(ngModel)]="completerStr"
+                   [inputClass]="cell.getColumn().getConfig().completer.class"
                    [dataService]="cell.getColumn().getConfig().completer.dataService"
                    [minSearchLength]="cell.getColumn().getConfig().completer.minSearchLength || 0"
                    [pause]="cell.getColumn().getConfig().completer.pause || 0"

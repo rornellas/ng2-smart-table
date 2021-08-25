@@ -10,6 +10,7 @@ import { distinctUntilChanged, debounceTime, map } from 'rxjs/operators';
   template: `
     <ng2-completer [(ngModel)]="query"
                    (ngModelChange)="inputTextChanged($event)"
+                   [inputClass]="column.getFilterConfig().completer.class"
                    [dataService]="column.getFilterConfig().completer.dataService"
                    [minSearchLength]="column.getFilterConfig().completer.minSearchLength || 0"
                    [pause]="column.getFilterConfig().completer.pause || 0"
