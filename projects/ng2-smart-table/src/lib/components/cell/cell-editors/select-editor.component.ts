@@ -7,15 +7,15 @@ import { DefaultEditor } from './default-editor';
   template: `
     <select [ngClass]="inputClass"
             class="form-control"
-            [(ngModel)]="cell.newValue"
+            [(ngModel)]="value"
             [name]="cell.getId()"
             [disabled]="!cell.isEditable()"
             (click)="onClick.emit($event)"
             (keydown.enter)="onEdited.emit($event)"
             (keydown.esc)="onStopEditing.emit()">
 
-        <option *ngFor="let option of cell.getColumn().getConfig()?.list" [value]="option.value"
-                [selected]="option.value === cell.getValue()">{{ option.title }}
+        <option *ngFor="let option of cell.getColumn().getConfig()?.list" [value]="findKeyPropertyValue(option, 'value')"
+                [selected]="isSelectedOption(option)">{{ option.title }}
         </option>
     </select>
     `,
@@ -45,12 +45,20 @@ export class SelectEditorComponent extends DefaultEditor {
     super();
   }
 
+  isSelectedOption(option: any) {
+    return this.findKeyPropertyValue(option, 'value') == this.getSelectionValue();
+  }
+
   getSelectionValue() {
+    return this.findKeyPropertyValue(this.cell.getValue());
+  }
+
+  findKeyPropertyValue(object: any, defaultProperty?: string) {
     const keyPropertyName = this.keyPropertyName();
     if (keyPropertyName) {
-      return this.cell.getValue()[keyPropertyName];
+      return object[keyPropertyName];
     }
-    return this.cell.getValue();
+    return defaultProperty ? object[defaultProperty] : object;    
   }
 
   private keyPropertyName() {

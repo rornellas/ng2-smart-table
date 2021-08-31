@@ -166,4 +166,4 @@ We're always happy to hear your feedback!
 
 
 # BUILD
- ng build ng2-smart-table --prod
+ng build ng2-smart-table --prod

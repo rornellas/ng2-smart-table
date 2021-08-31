@@ -5,25 +5,7 @@ import { Row } from '../../../lib/data-set/row';
 
 @Component({
   selector: '[ng2-st-thead-form-row]',
-  template: `
-      <td *ngIf=""></td>
-      <td  *ngIf="showActionColumnLeft"  class="ng2-smart-actions">
-        <ng2-st-actions [grid]="grid" (create)="onCreate($event)"></ng2-st-actions>
-      </td>
-      <td *ngFor="let cell of grid.getNewRow().getCells()">
-        <ng2-smart-table-cell [cell]="cell"
-                              [grid]="grid"
-                              [isNew]="true"
-                              [createConfirm]="createConfirm"
-                              [inputClass]="addInputClass"
-                              [isInEditing]="grid.getNewRow().isInEditing"
-                              (edited)="onCreate($event)">
-        </ng2-smart-table-cell>
-      </td>
-      <td  *ngIf="showActionColumnRight"  class="ng2-smart-actions">
-        <ng2-st-actions [grid]="grid" (create)="onCreate($event)"></ng2-st-actions>
-      </td>
-  `,
+  templateUrl: './thead-form-row.component.html',
 })
 export class TheadFormRowComponent implements OnChanges {
 
@@ -37,6 +19,71 @@ export class TheadFormRowComponent implements OnChanges {
   showActionColumnLeft: boolean;
   showActionColumnRight: boolean;
   addInputClass: string;
+
+  public get newRow(): Row {
+    return this.grid.getNewRow();
+  }
+
+  get displayConfig() {
+    return this.grid?.settings?.displayConfig;
+  }
+
+  get displayConfigGroups() {
+    return this.displayConfig?.groups;
+  }
+
+  getCollapseDisplay(row: Row, group: any) {
+    if (group.collapseConfig) {
+
+      if (row[group.name]) {
+        return !row[group.name]?.collapsed ? '' : 'none';
+      }
+
+      return !group.collapseConfig?.default ? '' : 'none';
+
+    } else {
+      return '';
+    }
+  }
+
+  defineIfCollapsable(row: Row, group: any) {
+    this.collapseGroup(row, group);
+    if (group.collapseConfig) {
+      return true;
+    }
+    return false;
+  }
+
+  getByCollapsed(row: Row, group: any, property: string) {
+    if (row[group.name] === undefined) {
+      this.collapseGroup(row, group);
+    }
+
+    const collapsed = row[group.name]?.collapsed;
+
+    if (!collapsed) {
+      if (!group.collapseConfig.collapsed) {
+        group.collapseConfig.collapsed = {};
+      }
+      return group.collapseConfig?.collapsed[property];
+    }
+    if (!group.collapseConfig.expanded) {
+      group.collapseConfig.expanded = {};
+    }
+    return group.collapseConfig?.expanded[property];
+  }
+
+  collapseGroup(row: Row, group: any) {
+    if (row[group.name]?.collapsed === undefined) {
+      if (group?.collapseConfig?.default) {
+        row[group.name] = { collapsed: group?.collapseConfig?.default };
+      } else {
+        row[group.name] = { collapsed: true };
+      }
+    } else {
+      row[group.name].collapsed = !row[group.name].collapsed;
+    }
+  }
 
   onCreate(event: any) {
     event.stopPropagation();

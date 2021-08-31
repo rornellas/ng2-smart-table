@@ -8,6 +8,7 @@ import { ViewCell } from 'ng2-smart-table';
   `,
 })
 export class CustomRenderComponent implements ViewCell, OnInit {
+  cell: any;
 
   renderValue: string;
 

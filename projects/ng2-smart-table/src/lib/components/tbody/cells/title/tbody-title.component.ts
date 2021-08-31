@@ -14,7 +14,7 @@ import { Column } from '../../../../lib/data-set/column';
                 [ngClass]="currentDirection">
       <span>{{ column.title }}: </span>
     </a>
-    <span class="ng2-smart-sort margin-distance" *ngIf="!column.isSortable">{{ column.title }}: </span>
+    <span class="ng2-smart-sort margin-distance" *ngIf="!column.isSortable"><b>{{ column.title }}: </b></span>
   `,
 })
 export class TBodyTitleComponent implements OnChanges {

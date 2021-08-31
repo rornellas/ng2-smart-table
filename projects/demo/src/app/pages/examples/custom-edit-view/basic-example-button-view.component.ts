@@ -8,6 +8,7 @@ import { ViewCell } from 'ng2-smart-table';
   `,
 })
 export class ButtonViewComponent implements ViewCell, OnInit {
+  cell: any;
   renderValue: string;
 
   @Input() value: string | number;
