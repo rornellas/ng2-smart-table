@@ -16,7 +16,7 @@
 
             <div [class]="group.class" [style]="group.style" [style.display]="getCollapseDisplay(newRow, group)">
 
-              <ng-container *ngFor="let cell of newRow.getCells()">
+              <ng-container *ngFor="let cell of newRowCells">
 
                   <div *ngIf="group.name === cell.getColumn().group" [class]="cell.getColumn().class" [style]="cell.getColumn().style">
                     <div [class]="cell.getColumn().labelClass" [style]="cell.getColumn().labelStyle">
@@ -40,7 +40,7 @@
           </ng-container>
 
           <div [class]="displayConfig?.defaultGroupClass" [style]="displayConfig?.defaultGroupStyle">
-            <ng-container *ngFor="let cell of newRow.getCells()">
+            <ng-container *ngFor="let cell of newRowCells">
 
               <div *ngIf="cell.getColumn().group === undefined" [class]="cell.getColumn().class" [style]="cell.getColumn().style">
                 <div [class]="cell.getColumn().labelClass" [style]="cell.getColumn().labelStyle">
@@ -67,7 +67,7 @@
   </ng-container>
 
   <ng-container *ngIf="grid?.settings?.displayConfig?.type === 'default' || !grid?.settings?.displayConfig?.type">
-    <td *ngFor="let cell of newRow.getCells()">
+    <td *ngFor="let cell of newRowCells">
       <ng2-smart-table-cell [cell]="cell"
                             [grid]="grid"
                             [isNew]="true"

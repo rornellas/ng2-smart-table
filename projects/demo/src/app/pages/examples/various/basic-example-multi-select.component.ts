@@ -39,6 +39,7 @@ export class BasicExampleMultiSelectComponent {
         style: 'width: 20%; display: table-cell',
         class: 'crazy-class',
         group: 'beta',
+        addable: false,
       },
       name: {
         title: 'Full Name',

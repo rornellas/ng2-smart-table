@@ -2,6 +2,7 @@ import { Component, Input, Output, EventEmitter, OnChanges } from '@angular/core
 
 import { Grid } from '../../../lib/grid';
 import { Row } from '../../../lib/data-set/row';
+import { Cell } from '../../../lib/data-set/cell';
 
 @Component({
   selector: '[ng2-st-thead-form-row]',
@@ -22,6 +23,17 @@ export class TheadFormRowComponent implements OnChanges {
 
   public get newRow(): Row {
     return this.grid.getNewRow();
+  }
+
+  public get newRowCells(): Cell[] {
+    const cells = this.newRow.getCells().filter(cell => this.checkAddableCell(cell));
+    return cells;
+  }
+
+  checkAddableCell(cell: any) {
+    const column = cell.getColumn();
+    const settings = column?.settings;
+    return (settings.addable === undefined || settings.addable);
   }
 
   get displayConfig() {
