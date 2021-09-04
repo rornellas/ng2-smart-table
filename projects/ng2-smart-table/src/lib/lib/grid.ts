@@ -46,6 +46,7 @@ export class Grid {
   }
 
   getNewRow(): Row {
+    if (this.settings?.custom)
     return this.dataSet.newRow;
   }
 
