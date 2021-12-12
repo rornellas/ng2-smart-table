@@ -1,6 +1,6 @@
 {
-  "name": "ng2-smart-table",
-  "version": "1.6.0",
+  "name": "@rornellas/ng2-smart-table",
+  "version": "1.6.0-custom",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
@@ -15,7 +15,7 @@
     "lint": "ng lint",
     "e2e": "ng e2e"
   },
-  "private": true,
+  "private": false,
   "dependencies": {
     "@angular/animations": "~9.0.4",
     "@angular/common": "~9.0.4",
@@ -56,5 +56,17 @@
     "ts-node": "~7.0.0",
     "tslint": "~5.15.0",
     "typescript": "~3.7.5"
-  }
+  },
+  "description": "[![Build Status](https://travis-ci.org/akveo/ng2-smart-table.svg?branch=master)](https://travis-ci.org/akveo/ng2-smart-table)",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rornellas/ng2-smart-table.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rornellas/ng2-smart-table/issues"
+  },
+  "homepage": "https://github.com/rornellas/ng2-smart-table#readme"
 }
