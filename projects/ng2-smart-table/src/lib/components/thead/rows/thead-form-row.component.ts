@@ -26,8 +26,7 @@ export class TheadFormRowComponent implements OnChanges {
   }
 
   public get newRowCells(): Cell[] {
-    const cells = this.newRow.getCells().filter(cell => this.checkAddableCell(cell));
-    return cells;
+    return this.newRow.getCells();
   }
 
   checkAddableCell(cell: any) {
