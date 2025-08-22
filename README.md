@@ -129,7 +129,27 @@ And pass the data to the table:
 ```
 
 Now you have some data in the table.
- 
+
+## Development & Publishing
+
+### Quick Start
+For the fastest way to make changes and publish, see [QUICK_START.md](QUICK_START.md).
+
+### Development Guide
+Complete development workflow, testing, and deployment instructions: [DEVELOPMENT.md](DEVELOPMENT.md).
+
+### Publishing Commands
+```bash
+# Safe publishing (recommended)
+npm run release
+
+# Force publishing (if git issues occur)
+npm run release:force
+
+# Dry run only
+npm run release:dry
+```
+
 ## Further Documentation
 Installation, customization and other useful articles: https://akveo.github.io/ng2-smart-table/
 

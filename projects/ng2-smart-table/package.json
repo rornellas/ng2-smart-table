@@ -1,9 +1,30 @@
 {
   "name": "@rornellas/ng2-smart-table",
   "version": "1.6.0",
-  "description": "Angular Smart Table",
+  "description": "Angular Smart Table Component - Enhanced fork with custom features",
   "author": "akveo",
   "license": "MIT",
+  "keywords": [
+    "angular",
+    "table",
+    "smart-table",
+    "data-table",
+    "grid",
+    "ui-component"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/rornellas/ng2-smart-table.git",
+    "directory": "projects/ng2-smart-table"
+  },
+  "bugs": {
+    "url": "https://github.com/rornellas/ng2-smart-table/issues"
+  },
+  "homepage": "https://github.com/rornellas/ng2-smart-table#readme",
+  "funding": {
+    "type": "github",
+    "url": "https://github.com/sponsors/rornellas"
+  },
   "dependencies": {
     "lodash": "^4.17.10"
   },
