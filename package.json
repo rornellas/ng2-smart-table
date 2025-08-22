@@ -1,6 +1,6 @@
 {
   "name": "@rornellas/ng2-smart-table",
-  "version": "1.6.0-custom",
+  "version": "1.6.1-custom",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
